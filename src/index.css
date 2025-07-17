@@ -1,0 +1,34 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Valorant themed styles */
+body {
+  font-family: 'Rajdhani', 'Arial', sans-serif;
+  background: linear-gradient(135deg, #0f1923 0%, #1f2633 100%);
+  color: #fff;
+}
+
+header.navbar {
+  background: #ff4655;
+  box-shadow: 0 2px 8px rgba(255, 70, 85, 0.2);
+}
+
+input.input {
+  background: #1f2633;
+  color: #ff4655;
+  border: 1px solid #ff4655;
+}
+
+input.input:focus {
+  border-color: #fff;
+  outline: none;
+}
+
+.text-primary {
+  color: #ff4655;
+}
+
+.text-2xl {
+  font-family: 'Rajdhani', 'Arial', sans-serif;
+  letter-spacing: 2px;
+}
