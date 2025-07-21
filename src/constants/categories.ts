@@ -1,0 +1,17 @@
+export const categories = [
+  { name: "Agents", endpoint: "/agents" },
+  { name: "Weapons", endpoint: "/weapons" },
+  { name: "Maps", endpoint: "/maps" },
+  { name: "Buddies", endpoint: "/buddies" },
+  { name: "Sprays", endpoint: "/sprays" },
+  { name: "Player Cards", endpoint: "/playercards" },
+  { name: "Ranks", endpoint: "/competitivetiers" },
+  { name: "Seasons", endpoint: "/seasons" },
+  { name: "Game Modes", endpoint: "/gamemodes" },
+  { name: "Ceremonies", endpoint: "/ceremonies" },
+  { name: "Contracts", endpoint: "/contracts" },
+  { name: "Currencies", endpoint: "/currencies" },
+  { name: "Events", endpoint: "/events" },
+  { name: "Themes", endpoint: "/themes" },
+  { name: "Content Tiers", endpoint: "/contenttiers" },
+];
