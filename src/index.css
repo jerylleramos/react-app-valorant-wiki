@@ -14,7 +14,6 @@ header.navbar {
 }
 
 input.input {
-  background: #1f2633;
   color: #ff4655;
   border: 1px solid #ff4655;
 }
@@ -31,4 +30,22 @@ input.input:focus {
 .text-2xl {
   font-family: 'Rajdhani', 'Arial', sans-serif;
   letter-spacing: 2px;
+}
+
+/* Ability container theme styles */
+.ability-container {
+  background: #ff7a8c; /* pastel Valorant red */
+  color: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  .ability-container {
+    background: #1f2633;
+    color: #fff;
+  }
+}
+/* Invert white icons for abilities in light theme */
+@media (prefers-color-scheme: light) {
+  .ability-icon {
+    filter: invert(0.85) drop-shadow(0 0 2px #222);
+  }
 }

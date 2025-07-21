@@ -12,7 +12,7 @@ const Search: React.FC<SearchProps> = ({ searchTerm, setSearchTerm, onClear }) =
       <input
         type="text"
         placeholder="Type here to search..."
-        className="input input-bordered w-full max-w-xs bg-base-200 text-primary"
+        className="input input-bordered w-full max-w-xs bg-base-200 text-base-content"
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
       />
