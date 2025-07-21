@@ -7,7 +7,7 @@ import RankTierGrid from "./components/RankTierGrid";
 import ThemeSwitch from "./components/ThemeSwitch";
 import { categories } from "./constants/categories";
 import { fetchCategoryItems, fetchSearchResults } from "./utils/api";
-import { noDetailCategories } from "./utils/details";
+import { getDetailComponent as getDetailComponentUtil, noDetailCategories } from "./utils/details";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -91,13 +91,7 @@ function App() {
     return <ItemCard key={idx} item={item} onClick={setSelectedItem} />;
   };
 
-  const getDetailComponent = (
-    item: Record<string, unknown>,
-    category: string | null,
-    onBack: () => void
-  ) => {
-    return getDetailComponent(item, category, onBack);
-  };
+  // Use the imported getDetailComponent utility directly
 
   const paginatedItems = (searchTerm ? searchResults : items).slice(
     (page - 1) * itemsPerPage,
@@ -109,6 +103,15 @@ function App() {
   return (
     <div className="relative min-h-screen">
       <ThemeSwitch />
+      {selectedItem && (
+        <div className="fixed inset-0 z-50 flex items-start justify-center min-h-screen w-full bg-black bg-opacity-60 p-2 sm:p-4 overflow-y-auto">
+          <div className="relative w-full max-w-full sm:max-w-xl md:max-w-2xl lg:max-w-2xl mx-auto max-h-[90vh] overflow-y-auto">
+            {getDetailComponentUtil(selectedItem, selectedCategory, () =>
+              setSelectedItem(null)
+            )}
+          </div>
+        </div>
+      )}
       <main className="bg-base-200 text-base-content min-h-screen">
         <Header
           searchTerm={searchTerm}
@@ -116,15 +119,7 @@ function App() {
           onClear={resetPage}
         />
         <div className="container mx-auto flex flex-col items-center justify-center">
-          {selectedItem && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
-              <div className="relative">
-                {getDetailComponent(selectedItem, selectedCategory, () =>
-                  setSelectedItem(null)
-                )}
-              </div>
-            </div>
-          )}
+          {/* ...existing code... */}
           {!selectedItem && (searchTerm || selectedCategory) ? (
             <section className="px-8 py-6 w-full max-w-6xl">
               <button className="btn btn-outline mb-4" onClick={resetPage}>

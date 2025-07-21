@@ -13,7 +13,7 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ item, onBack }) => {
   const abilities = Array.isArray(item.abilities) ? item.abilities : [];
 
   return (
-    <div className="max-w-4xl mx-auto bg-base-100 rounded-xl shadow-2xl p-8 border-2 border-[#ff4655]">
+    <div className="w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-4xl mx-auto bg-base-100 rounded-xl shadow-2xl p-4 sm:p-6 md:p-8 border-2 border-[#ff4655]">
       <button className="btn btn-outline mb-4" onClick={onBack}>
         ← Back
       </button>
