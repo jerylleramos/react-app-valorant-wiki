@@ -14,7 +14,7 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ item, onBack }) => {
 
   return (
     <div className="w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-4xl mx-auto bg-base-100 rounded-xl shadow-2xl p-4 sm:p-6 md:p-8 border-2 border-[#ff4655]">
-      <button className="btn btn-outline mb-4" onClick={onBack}>
+      <button className="btn btn-outline text-base-content font-bold border-base-content mb-4" onClick={onBack}>
         ← Back
       </button>
       <h1 className="text-3xl font-bold text-primary mb-4 text-center">
@@ -23,7 +23,7 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ item, onBack }) => {
       {displayIcon && (
         <img src={displayIcon} alt={displayName || "icon"} className="w-40 h-40 object-contain mx-auto mb-6" />
       )}
-      {description && <p className="mb-4 text-center text-primary-300">{description}</p>}
+      {description && <p className="mb-4 text-center text-base-content">{description}</p>}
       {role && (
         <div className="mb-4 text-center">
           <span className="font-semibold">Role: </span>
@@ -43,7 +43,7 @@ const AgentDetail: React.FC<AgentDetailProps> = ({ item, onBack }) => {
               return (
                 <div
                   key={abName || idx}
-                  className="rounded p-2 flex flex-col items-center border border-[#ff4655] shadow ability-container"
+                  className="rounded p-2 flex flex-col items-center border border-[#ff4655] shadow ability-container bg-base-200 text-base-content"
                 >
                   {abIcon && (
                     <img

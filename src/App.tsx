@@ -91,8 +91,6 @@ function App() {
     return <ItemCard key={idx} item={item} onClick={setSelectedItem} />;
   };
 
-  // Use the imported getDetailComponent utility directly
-
   const paginatedItems = (searchTerm ? searchResults : items).slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage
@@ -119,7 +117,6 @@ function App() {
           onClear={resetPage}
         />
         <div className="container mx-auto flex flex-col items-center justify-center">
-          {/* ...existing code... */}
           {!selectedItem && (searchTerm || selectedCategory) ? (
             <section className="px-8 py-6 w-full max-w-6xl">
               <button className="btn btn-outline mb-4" onClick={resetPage}>

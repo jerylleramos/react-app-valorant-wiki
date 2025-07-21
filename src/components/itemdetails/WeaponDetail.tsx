@@ -12,8 +12,8 @@ const WeaponDetail: React.FC<WeaponDetailProps> = ({ item, onBack }) => {
   const shopData = typeof item.shopData === "object" && item.shopData !== null ? item.shopData as Record<string, unknown> : undefined;
   const weaponStats = typeof item.weaponStats === "object" && item.weaponStats !== null ? item.weaponStats as Record<string, unknown> : undefined;
   return (
-    <div className="w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-2xl mx-auto bg-base-100 rounded-xl shadow-2xl p-4 sm:p-6 md:p-8 border-2 border-[#ff4655]">
-      <button className="btn btn-outline mb-4" onClick={onBack}>
+    <div className="w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-2xl mx-auto bg-base-200 text-base-content rounded-xl shadow-2xl p-4 sm:p-6 md:p-8 border-2 border-[#ff4655]">
+      <button className="btn btn-outline text-base-content font-bold border-base-content mb-4" onClick={onBack}>
         ← Back
       </button>
       <h1 className="text-3xl font-bold text-primary mb-4 text-center">{displayName}</h1>
