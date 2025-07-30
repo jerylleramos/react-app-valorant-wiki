@@ -15,10 +15,9 @@ function App() {
   const [items, setItems] = useState<Record<string, unknown>[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [selectedItem, setSelectedItem] = useState<Record<
-    string,
-    unknown
-  > | null>(null);
+  const [selectedItem, setSelectedItem] = useState<Record<string, unknown> | null>(null);
+  // Track the category for the selected item (for detail view)
+  const [selectedItemCategory, setSelectedItemCategory] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const itemsPerPage = 15;
   const [searchResults, setSearchResults] = useState<Record<string, unknown>[]>(
@@ -76,19 +75,31 @@ function App() {
     setSearchLoading(false);
     setSearchError(null);
     setSelectedItem(null);
+    setSelectedItemCategory(null);
     setItems([]);
     setError(null);
     setLoading(false);
   };
 
   const renderItemCard = (item: Record<string, unknown>, idx: number) => {
-    if (selectedCategory === "/competitivetiers" && Array.isArray(item.tiers)) {
+    // Determine the category for the item (from selectedCategory or from item if searching)
+    const category = selectedCategory || (item.category as string) || null;
+    if (category === "/competitivetiers" && Array.isArray(item.tiers)) {
       return <RankTierGrid key={idx} item={item} />;
     }
-    if (noDetailCategories.includes(selectedCategory || "")) {
+    if (noDetailCategories.includes(category || "")) {
       return <ItemCard key={idx} item={item} onClick={() => {}} />;
     }
-    return <ItemCard key={idx} item={item} onClick={setSelectedItem} />;
+    return (
+      <ItemCard
+        key={idx}
+        item={item}
+        onClick={() => {
+          setSelectedItem(item);
+          setSelectedItemCategory(category);
+        }}
+      />
+    );
   };
 
   const paginatedItems = (searchTerm ? searchResults : items).slice(
@@ -104,9 +115,10 @@ function App() {
       {selectedItem && (
         <div className="fixed inset-0 z-50 flex items-start justify-center min-h-screen w-full bg-black bg-opacity-60 p-2 sm:p-4 overflow-y-auto">
           <div className="relative w-full max-w-full sm:max-w-xl md:max-w-2xl lg:max-w-2xl mx-auto max-h-[90vh] overflow-y-auto">
-            {getDetailComponentUtil(selectedItem, selectedCategory, () =>
-              setSelectedItem(null)
-            )}
+            {getDetailComponentUtil(selectedItem, selectedItemCategory || selectedCategory, () => {
+              setSelectedItem(null);
+              setSelectedItemCategory(null);
+            })}
           </div>
         </div>
       )}
